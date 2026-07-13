@@ -14,10 +14,8 @@ describe('Footer', () => {
   it('displays the name and role', () => {
     render(<Footer />);
 
-    expect(screen.getByText("Michael D'Angelo")).toBeInTheDocument();
-    expect(
-      screen.getByText('Member of the Technical Staff at OpenAI'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Uguudei Bayaraa')).toBeInTheDocument();
+    expect(screen.getByText('AI Engineer')).toBeInTheDocument();
   });
 
   it('displays the current year in copyright', () => {

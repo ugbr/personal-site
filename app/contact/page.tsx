@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 
 import ContactIcons from '@/components/Contact/ContactIcons';
-import EmailLink from '@/components/Contact/EmailLink';
 
 import PageWrapper from '@/components/Template/PageWrapper';
 import { createPageMetadata } from '@/lib/metadata';
 
+const EMAIL = 'uguudei.bayar@gmail.com';
+
 export const metadata: Metadata = createPageMetadata({
   title: 'Contact',
-  description: "Contact Michael D'Angelo via email @ hi@mldangelo.com",
+  description: 'Get in touch with Uguudei Bayaraa by email or on social.',
   path: '/contact/',
 });
 
@@ -22,8 +23,13 @@ export default function ContactPage() {
 
         <div className="contact-content">
           <div className="contact-email-block">
-            <EmailLink />
-            <p className="contact-hint">Usually respond within 24 hours</p>
+            <div className="contact-email-container">
+              <a href={`mailto:${EMAIL}`} className="contact-email-link">
+                <span className="contact-email-prefix">uguudei.bayar</span>
+                <span className="contact-email-domain">@gmail.com</span>
+              </a>
+            </div>
+            <p className="contact-hint">I usually reply within a day or two</p>
           </div>
 
           <div className="contact-divider">

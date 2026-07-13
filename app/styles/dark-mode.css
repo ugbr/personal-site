@@ -20,8 +20,8 @@
   --color-overlay-darker: rgba(0, 0, 0, 0.5);
 
   /* Accent colors */
-  --color-accent: #60a5fa;
-  --color-accent-hover: #93c5fd;
+  --color-accent: #34d399;
+  --color-accent-hover: #6ee7b7;
   --color-accent-light: color-mix(in srgb, var(--color-accent) 22%, transparent);
   --color-accent-subtle: color-mix(in srgb, var(--color-accent) 15%, transparent);
   --color-accent-border: color-mix(in srgb, var(--color-accent) 50%, transparent);
@@ -53,10 +53,6 @@
 
 [data-theme='dark'] .nav-link:hover {
   background-color: var(--color-surface-active);
-}
-
-[data-theme='dark'] .nav-link.active {
-  background-color: var(--color-accent-hover);
 }
 
 [data-theme='dark'] .site-footer-new {

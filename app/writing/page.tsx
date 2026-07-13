@@ -142,6 +142,12 @@ export default function WritingPage() {
         </header>
 
         <div className="writing-list">
+          {allItems.length === 0 && (
+            <p className="writing-empty">
+              No posts yet. I&apos;m planning to write here soon, so check back.
+            </p>
+          )}
+
           {dated.map((item) => (
             <WritingItem key={item.url} item={item} />
           ))}

@@ -11,15 +11,15 @@ describe('sitemap', () => {
       expect.arrayContaining([
         expect.objectContaining({ url: `${SITE_URL}/about/` }),
         expect.objectContaining({ url: `${SITE_URL}/resume/` }),
+        expect.objectContaining({ url: `${SITE_URL}/courses/` }),
         expect.objectContaining({ url: `${SITE_URL}/projects/` }),
         expect.objectContaining({ url: `${SITE_URL}/writing/` }),
-        expect.objectContaining({ url: `${SITE_URL}/stats/` }),
         expect.objectContaining({ url: `${SITE_URL}/contact/` }),
       ]),
     );
   });
 
-  it('uses trailing slashes for post routes', () => {
+  it('uses trailing slashes for any post routes', () => {
     const entries = sitemap();
     const postEntries = entries.filter(
       (entry) =>
@@ -27,7 +27,7 @@ describe('sitemap', () => {
         entry.url !== `${SITE_URL}/writing/`,
     );
 
-    expect(postEntries.length).toBeGreaterThan(0);
+    // The blog may be empty; when posts exist, their URLs must be trailing-slashed.
     expect(postEntries.every((entry) => entry.url.endsWith('/'))).toBe(true);
   });
 });

@@ -12,81 +12,66 @@ export interface Category {
 const skills: Skill[] = [
   // Languages
   {
-    title: 'Python',
-    competency: 5,
-    category: ['Languages', 'ML Engineering'],
-  },
-  {
     title: 'TypeScript',
     competency: 5,
-    category: ['Languages', 'Web Development'],
+    category: ['Languages', 'Frontend', 'Backend'],
+  },
+  {
+    title: 'JavaScript',
+    competency: 5,
+    category: ['Languages', 'Frontend', 'Backend'],
+  },
+  {
+    title: 'Python',
+    competency: 4,
+    category: ['Languages', 'AI Engineering'],
+  },
+  {
+    title: 'Dart',
+    competency: 3,
+    category: ['Languages', 'Mobile'],
   },
   {
     title: 'SQL',
     competency: 4,
     category: ['Languages', 'Databases'],
   },
-  // AI & LLM
+  // Frontend
   {
-    title: 'AI Agents',
+    title: 'React',
     competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'LLM Evaluation',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'AI Red-teaming',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'LLM APIs',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'RAG',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Prompt Engineering',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Vector Databases',
-    competency: 4,
-    category: ['ML Engineering', 'Databases'],
-  },
-  {
-    title: 'PyTorch',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Pandas',
-    competency: 5,
-    category: ['ML Engineering', 'Data Engineering'],
-  },
-  // Web Development
-  {
-    title: 'Node.js',
-    competency: 5,
-    category: ['Web Development'],
-  },
-  {
-    title: 'FastAPI',
-    competency: 4,
-    category: ['Web Development'],
+    category: ['Frontend'],
   },
   {
     title: 'Next.js',
+    competency: 4,
+    category: ['Frontend'],
+  },
+  {
+    title: 'HTML & CSS',
+    competency: 5,
+    category: ['Frontend'],
+  },
+  // Backend
+  {
+    title: 'Node.js',
+    competency: 4,
+    category: ['Backend'],
+  },
+  {
+    title: 'FastAPI',
     competency: 3,
-    category: ['Web Development'],
+    category: ['Backend'],
+  },
+  {
+    title: 'REST APIs',
+    competency: 4,
+    category: ['Backend'],
+  },
+  {
+    title: 'Appwrite',
+    competency: 3,
+    category: ['Backend'],
   },
   // Databases
   {
@@ -95,30 +80,62 @@ const skills: Skill[] = [
     category: ['Databases'],
   },
   {
-    title: 'Redis',
-    competency: 3,
+    title: 'PostGIS',
+    competency: 4,
     category: ['Databases'],
+  },
+  // AI Engineering
+  {
+    title: 'LLM APIs',
+    competency: 4,
+    category: ['AI Engineering'],
+  },
+  {
+    title: 'AI Agents',
+    competency: 4,
+    category: ['AI Engineering'],
+  },
+  {
+    title: 'RAG',
+    competency: 3,
+    category: ['AI Engineering'],
+  },
+  {
+    title: 'Prompt Engineering',
+    competency: 4,
+    category: ['AI Engineering'],
+  },
+  // Mobile
+  {
+    title: 'Expo',
+    competency: 5,
+    category: ['Mobile'],
+  },
+  {
+    title: 'Flutter',
+    competency: 3,
+    category: ['Mobile'],
   },
   // Infrastructure
   {
-    title: 'AWS',
+    title: 'CI/CD',
+    competency: 4,
+    category: ['Infrastructure'],
+  },
+  {
+    title: 'Google Cloud Platform',
     competency: 4,
     category: ['Infrastructure'],
   },
   {
     title: 'Docker',
-    competency: 4,
-    category: ['Infrastructure'],
-  },
-  {
-    title: 'Kubernetes',
     competency: 3,
     category: ['Infrastructure'],
   },
   {
-    title: 'Observability',
-    competency: 4,
-    category: ['Infrastructure', 'ML Engineering'],
+    title: 'Git',
+    competency: 5,
+    category: ['Infrastructure'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 

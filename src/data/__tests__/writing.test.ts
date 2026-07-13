@@ -5,7 +5,6 @@ import writing from '../writing';
 describe('writing data', () => {
   it('exports an array of writing items', () => {
     expect(Array.isArray(writing)).toBe(true);
-    expect(writing.length).toBeGreaterThan(0);
   });
 
   it('each item has required properties', () => {
@@ -22,14 +21,9 @@ describe('writing data', () => {
     }
   });
 
-  it('titles are non-empty', () => {
+  it('titles and descriptions are non-empty', () => {
     for (const item of writing) {
       expect(item.title.trim().length).toBeGreaterThan(0);
-    }
-  });
-
-  it('descriptions are non-empty', () => {
-    for (const item of writing) {
       expect(item.description.trim().length).toBeGreaterThan(0);
     }
   });

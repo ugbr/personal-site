@@ -15,41 +15,35 @@ describe('Hero', () => {
     render(<Hero />);
 
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent("Michael D'Angelo");
+    expect(heading).toHaveTextContent('Uguudei Bayaraa');
   });
 
-  it('renders the tagline with OpenAI and promptfoo links', () => {
+  it('renders the tagline', () => {
     render(<Hero />);
 
-    const openAiLink = screen.getByRole('link', { name: /openai/i });
-    expect(openAiLink).toHaveAttribute('href', 'https://openai.com');
-    expect(openAiLink).toHaveClass('hero-highlight');
-
-    const promptfooLink = screen.getByRole('link', { name: /promptfoo/i });
-    expect(promptfooLink).toHaveAttribute('href', 'https://promptfoo.dev');
-    expect(promptfooLink).toHaveClass('hero-highlight');
+    const tagline = document.querySelector('.hero-tagline');
+    expect(tagline?.textContent).toMatch(/fullstack developer/i);
+    expect(tagline?.textContent).toMatch(/agentic ai/i);
   });
 
-  it('displays hero chips for credentials', () => {
+  it('displays hero chips', () => {
     render(<Hero />);
 
-    expect(screen.getByText('YC Alum')).toBeInTheDocument();
-    expect(screen.getByText('Stanford ICME')).toBeInTheDocument();
-    expect(
-      screen.getByText('Co-founded Arthena & Matroid'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Fullstack')).toBeInTheDocument();
+    expect(screen.getByText('Agentic AI')).toBeInTheDocument();
+    expect(screen.getByText('TypeScript · Python')).toBeInTheDocument();
   });
 
   it('renders CTA buttons with correct links', () => {
     render(<Hero />);
 
+    const projectsButton = screen.getByRole('link', { name: /view projects/i });
+    expect(projectsButton).toHaveAttribute('href', '/projects');
+    expect(projectsButton).toHaveClass('button');
+
     const aboutButton = screen.getByRole('link', { name: /about me/i });
     expect(aboutButton).toHaveAttribute('href', '/about');
-    expect(aboutButton).toHaveClass('button');
-
-    const resumeButton = screen.getByRole('link', { name: /view resume/i });
-    expect(resumeButton).toHaveAttribute('href', '/resume');
-    expect(resumeButton).toHaveClass('button-secondary');
+    expect(aboutButton).toHaveClass('button-secondary');
   });
 
   it('has decorative background elements', () => {

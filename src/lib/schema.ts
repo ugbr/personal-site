@@ -32,7 +32,7 @@ export const HOME_URL = `${SITE_URL}/`;
 
 // Shared so the /writing metadata and the Blog node stay in sync.
 export const WRITING_DESCRIPTION =
-  'Articles on AI security, LLM red teaming, and trust & safety.';
+  'Notes on building software and AI engineering.';
 
 type SchemaNode = Record<string, unknown>;
 
@@ -90,7 +90,7 @@ export function personNode(): SchemaNode {
     worksFor: {
       '@type': 'Organization',
       name: currentJob.name,
-      url: currentJob.url,
+      ...(currentJob.url ? { url: currentJob.url } : {}),
     },
     alumniOf: degrees.map((degree) => ({
       '@type': 'CollegeOrUniversity',
@@ -110,7 +110,7 @@ export function websiteNode(): SchemaNode {
     '@id': WEBSITE_ID,
     url: HOME_URL,
     name: AUTHOR_NAME,
-    alternateName: ['mldangelo.com', 'mldangelo'],
+    alternateName: ['uguudeib.com', 'Uguudei Bayaraa'],
     description: SITE_DESCRIPTION,
     inLanguage: SITE_LANGUAGE,
     publisher: personRef(),

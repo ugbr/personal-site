@@ -15,7 +15,7 @@ describe('createHeadingId', () => {
     ['Some History', 'some-history'],
     ['Travel / Geography', 'travel-geography'],
     ['Research & Development', 'research-and-development'],
-    ["Michael's Notes", 'michaels-notes'],
+    ["Uguudei's Notes", 'uguudeis-notes'],
     ['Café Crème', 'cafe-creme'],
   ])('creates stable ids for %s', (title, expected) => {
     expect(createHeadingId(title)).toBe(expected);
@@ -32,12 +32,10 @@ describe('createHeadingId', () => {
         createHeadingId(title),
       ]),
     ).toEqual([
-      ['Some History', 'some-history'],
-      ['I Like', 'i-like'],
-      ['Travel / Geography', 'travel-geography'],
-      ['Fun Facts', 'fun-facts'],
-      ['I Dream Of', 'i-dream-of'],
-      ['Websites from People I Admire', 'websites-from-people-i-admire'],
+      ['How I Got Here', 'how-i-got-here'],
+      ["What I'm Into Now", 'what-im-into-now'],
+      ['A Few Things I Like', 'a-few-things-i-like'],
+      ["What I'm Aiming For", 'what-im-aiming-for'],
     ]);
   });
 });

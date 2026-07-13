@@ -11,34 +11,29 @@ describe('courses data', () => {
   it('each course has required properties', () => {
     for (const course of courses) {
       expect(course).toHaveProperty('title');
-      expect(course).toHaveProperty('number');
-      expect(course).toHaveProperty('link');
-      expect(course).toHaveProperty('university');
+      expect(course).toHaveProperty('provider');
+      expect(course).toHaveProperty('year');
 
       expect(typeof course.title).toBe('string');
-      expect(typeof course.number).toBe('string');
-      expect(typeof course.link).toBe('string');
-      expect(typeof course.university).toBe('string');
+      expect(typeof course.provider).toBe('string');
+      expect(typeof course.year).toBe('string');
     }
   });
 
-  it('course numbers are non-empty', () => {
-    for (const course of courses) {
-      expect(course.number.trim().length).toBeGreaterThan(0);
-    }
-  });
-
-  it('course titles are non-empty', () => {
+  it('titles and providers are non-empty', () => {
     for (const course of courses) {
       expect(course.title.trim().length).toBeGreaterThan(0);
+      expect(course.provider.trim().length).toBeGreaterThan(0);
     }
   });
 
-  it('links are valid URLs', () => {
+  it('certificate urls are valid when present', () => {
     const urlRegex = /^https?:\/\/.+/;
 
     for (const course of courses) {
-      expect(course.link).toMatch(urlRegex);
+      if (course.certificateUrl) {
+        expect(course.certificateUrl).toMatch(urlRegex);
+      }
     }
   });
 
@@ -47,18 +42,5 @@ describe('courses data', () => {
     const uniqueTitles = new Set(titles);
 
     expect(uniqueTitles.size).toBe(titles.length);
-  });
-
-  it('has unique course numbers', () => {
-    const numbers = courses.map((c) => c.number);
-    const uniqueNumbers = new Set(numbers);
-
-    expect(uniqueNumbers.size).toBe(numbers.length);
-  });
-
-  it('all courses have valid university names', () => {
-    for (const course of courses) {
-      expect(course.university.trim().length).toBeGreaterThan(0);
-    }
   });
 });

@@ -12,12 +12,10 @@ describe('work data', () => {
     for (const job of work) {
       expect(job).toHaveProperty('name');
       expect(job).toHaveProperty('position');
-      expect(job).toHaveProperty('url');
       expect(job).toHaveProperty('startDate');
 
       expect(typeof job.name).toBe('string');
       expect(typeof job.position).toBe('string');
-      expect(typeof job.url).toBe('string');
       expect(typeof job.startDate).toBe('string');
     }
   });
@@ -48,11 +46,13 @@ describe('work data', () => {
     }
   });
 
-  it('urls are valid', () => {
+  it('urls are valid when present', () => {
     const urlRegex = /^https?:\/\/.+/;
 
     for (const job of work) {
-      expect(job.url).toMatch(urlRegex);
+      if (job.url) {
+        expect(job.url).toMatch(urlRegex);
+      }
     }
   });
 
@@ -69,14 +69,6 @@ describe('work data', () => {
         expect(job.highlights.length).toBeGreaterThan(0);
       }
     }
-  });
-
-  it('has positions from different years', () => {
-    const years = work.map((job) => new Date(job.startDate).getFullYear());
-    const uniqueYears = new Set(years);
-
-    // Resume should contain work from multiple years
-    expect(uniqueYears.size).toBeGreaterThan(1);
   });
 
   it('company names are non-empty', () => {

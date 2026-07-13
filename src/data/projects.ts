@@ -9,42 +9,25 @@ export interface Project {
   featured?: boolean;
 }
 
+// Placeholders for now. These get replaced with real write-ups as projects ship.
 const data: Project[] = [
   {
-    title: 'Nearest Dollar',
-    subtitle: '2015 BVP Hackathon',
-    image: '/images/projects/nearestdollar.jpg',
-    date: '2015-11-20',
-    desc: 'Connected to bank accounts to round up purchases and donate spare change to charity.',
-    tech: ['React', 'Node.js', 'Plaid API', 'MongoDB'],
+    title: 'Agentic AI Assistant',
+    subtitle: 'In progress',
+    image: '/images/projects/placeholder.svg',
+    date: '2026-01-01',
+    desc: "An AI agent that can plan a task, call tools, and follow through on its own. I'm building this now and will write it up properly once it's further along.",
+    tech: ['Python', 'LLM', 'Agents'],
     featured: true,
   },
   {
-    title: 'Harvest',
-    subtitle: '3rd place at Techcrunch Disrupt SF',
-    link: 'https://devpost.com/software/harvest',
-    image: '/images/projects/harvest.jpg',
-    date: '2015-09-20',
-    desc: 'Low-cost crop monitoring to catch irrigation leaks and nutrient deficiencies.',
-    tech: ['Python', 'Arduino', 'Computer Vision', 'AWS'],
-    featured: true,
-  },
-  {
-    title: 'Space Potato',
-    subtitle: 'Kickstarter-funded weather balloon',
-    link: 'http://www.spacepotato.org',
-    image: '/images/projects/spacepotato.jpg',
-    date: '2015-06-28',
-    desc: 'Potato-powered weather balloon with cameras. Photos published in a coffee table book.',
-    tech: ['Hardware', 'GPS', 'Photography'],
-  },
-  {
-    title: 'Cat Detector',
-    subtitle: 'CNN for cat breed classification',
-    image: '/images/projects/catdetector.jpg',
-    date: '2015-05-15',
-    desc: 'Classified 60,000+ cats across 80 breeds before server costs shut it down.',
-    tech: ['Python', 'TensorFlow', 'CNN', 'AWS'],
+    title: 'RAG Knowledge App',
+    subtitle: 'In progress',
+    link: 'https://github.com/ugbr',
+    image: '/images/projects/placeholder.svg',
+    date: '2025-12-01',
+    desc: 'A retrieval-augmented app that answers questions over a private set of documents, with citations. Another one in the works, follow along on GitHub.',
+    tech: ['Next.js', 'TypeScript', 'RAG'],
   },
 ];
 

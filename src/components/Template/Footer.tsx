@@ -1,13 +1,11 @@
 import Link from 'next/link';
 
 import ContactIcons from '@/components/Contact/ContactIcons';
-import work from '@/data/resume/work';
+import { AUTHOR_NAME } from '@/lib/utils';
 
 import ThemePortrait from './ThemePortrait';
 
 export default function Footer() {
-  const currentRole = `${work[0].position} at ${work[0].name}`;
-
   return (
     <footer className="site-footer-new">
       <div className="footer-content">
@@ -16,12 +14,12 @@ export default function Footer() {
             <ThemePortrait width={80} height={80} />
           </Link>
           <div className="footer-info">
-            <h3>Michael D&apos;Angelo</h3>
-            <p className="footer-role">{currentRole}</p>
+            <h3>{AUTHOR_NAME}</h3>
+            <p className="footer-role">AI Engineer</p>
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
               <a
-                href="https://github.com/mldangelo/personal-site"
+                href="https://github.com/ugbr"
                 target="_blank"
                 rel="noopener noreferrer"
               >

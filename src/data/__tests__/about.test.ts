@@ -10,54 +10,46 @@ describe('about data', () => {
 
   it('contains the intro section', () => {
     expect(aboutMarkdown).toContain('# Intro');
-    expect(aboutMarkdown).toContain('OpenAI');
-    expect(aboutMarkdown).toContain('Promptfoo');
+    expect(aboutMarkdown).toContain('Ulaanbaatar');
+    expect(aboutMarkdown).toContain('E-Mongolia Academy');
   });
 
-  it('contains the history section', () => {
-    expect(aboutMarkdown).toContain('# Some History');
-    expect(aboutMarkdown).toContain('MS-DOS');
+  it('contains the origin story', () => {
+    expect(aboutMarkdown).toContain('# How I Got Here');
+    expect(aboutMarkdown).toContain('Minecraft');
+  });
+
+  it('contains the current focus section', () => {
+    expect(aboutMarkdown).toContain("# What I'm Into Now");
+    expect(aboutMarkdown).toContain('agentic AI');
   });
 
   it('contains the likes section', () => {
-    expect(aboutMarkdown).toContain('# I Like');
-    expect(aboutMarkdown).toContain('Running');
-    expect(aboutMarkdown).toContain('Skiing');
+    expect(aboutMarkdown).toContain('# A Few Things I Like');
+    expect(aboutMarkdown).toContain('Chess');
   });
 
-  it('contains the travel section', () => {
-    expect(aboutMarkdown).toContain('# Travel / Geography');
-    expect(aboutMarkdown).toContain('Buffalo, New York');
+  it('contains the aspirations section', () => {
+    expect(aboutMarkdown).toContain("# What I'm Aiming For");
   });
 
-  it('contains the fun facts section', () => {
-    expect(aboutMarkdown).toContain('# Fun Facts');
+  it('does not use em dashes', () => {
+    expect(aboutMarkdown).not.toContain('—');
   });
 
-  it('contains the dreams section', () => {
-    expect(aboutMarkdown).toContain('# I Dream Of');
-    expect(aboutMarkdown).toContain('Staying curious');
-  });
-
-  it('contains the admired websites section', () => {
-    expect(aboutMarkdown).toContain('# Websites from People I Admire');
-  });
-
-  it('contains valid markdown links', () => {
-    // Check for markdown link format [text](url)
+  it('contains at least one markdown link', () => {
     const linkRegex = /\[.+?\]\(.+?\)/g;
     const links = aboutMarkdown.match(linkRegex);
 
     expect(links).not.toBeNull();
-    expect(links!.length).toBeGreaterThan(10);
+    expect(links!.length).toBeGreaterThanOrEqual(1);
   });
 
   it('contains properly formatted headers', () => {
-    // Check for markdown headers
     const headerRegex = /^#+ .+$/gm;
     const headers = aboutMarkdown.match(headerRegex);
 
     expect(headers).not.toBeNull();
-    expect(headers!.length).toBeGreaterThan(5);
+    expect(headers!.length).toBeGreaterThanOrEqual(4);
   });
 });
