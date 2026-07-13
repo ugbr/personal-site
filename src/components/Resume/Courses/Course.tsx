@@ -10,11 +10,11 @@ export default function Course({ data }: CourseProps) {
   return (
     <li className="course-card">
       <div className="course-card-body">
-        <h3 className="course-name">{title}</h3>
+        <span className="course-year">{year}</span>
+        <h4 className="course-name">{title}</h4>
         <p className="course-provider">{provider}</p>
       </div>
-      <div className="course-card-meta">
-        <span className="course-year">{year}</span>
+      <div className="course-card-footer">
         {certificateUrl ? (
           <a
             href={certificateUrl}
@@ -22,7 +22,10 @@ export default function Course({ data }: CourseProps) {
             rel="noopener noreferrer"
             className="course-cert"
           >
-            View certificate ↗
+            View certificate
+            <span className="course-cert-arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         ) : (
           <span className="course-cert course-cert--pending">

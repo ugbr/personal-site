@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import Course from '../../Courses/Course';
-import Courses from '../../Courses/Courses';
+import Course from '../../Resume/Courses/Course';
+import Courses from '../../Resume/Courses';
 
 const mockCourses = [
   {
@@ -26,6 +26,14 @@ describe('Courses', () => {
       screen.getByText('Machine Learning Specialization'),
     ).toBeInTheDocument();
     expect(screen.getByText('Deep Learning')).toBeInTheDocument();
+  });
+
+  it('renders a Courses section heading', () => {
+    render(<Courses data={mockCourses} />);
+
+    expect(
+      screen.getByRole('heading', { name: /courses/i }),
+    ).toBeInTheDocument();
   });
 
   it('renders providers and years', () => {

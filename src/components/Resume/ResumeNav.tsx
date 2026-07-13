@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 const sections = [
   { name: 'Experience', id: 'experience' },
   { name: 'Education', id: 'education' },
+  { name: 'Courses', id: 'courses' },
   { name: 'Skills', id: 'skills' },
 ] as const;
 

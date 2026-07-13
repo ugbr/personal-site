@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 import { AUTHOR_NAME, SITE_URL } from '@/lib/utils';
 import { metadata as aboutMetadata } from '../about/page';
 import { metadata as contactMetadata } from '../contact/page';
-import { metadata as coursesMetadata } from '../courses/page';
 import { metadata as notFoundMetadata } from '../not-found';
 import { metadata as projectsMetadata } from '../projects/page';
 import { metadata as resumeMetadata } from '../resume/page';
@@ -13,7 +12,6 @@ describe('page metadata', () => {
   it.each([
     ['about', aboutMetadata, `${SITE_URL}/about/`],
     ['contact', contactMetadata, `${SITE_URL}/contact/`],
-    ['courses', coursesMetadata, `${SITE_URL}/courses/`],
     ['projects', projectsMetadata, `${SITE_URL}/projects/`],
     ['resume', resumeMetadata, `${SITE_URL}/resume/`],
     ['writing', writingMetadata, `${SITE_URL}/writing/`],
@@ -28,7 +26,6 @@ describe('page metadata', () => {
   it.each([
     ['about', aboutMetadata],
     ['contact', contactMetadata],
-    ['courses', coursesMetadata],
     ['projects', projectsMetadata],
     ['resume', resumeMetadata],
     ['writing', writingMetadata],
