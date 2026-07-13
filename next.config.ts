@@ -4,6 +4,10 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   output: 'export',
 
+  // basePath for GitHub Pages project sites (e.g. /personal-site). Provided by
+  // the deploy workflow from actions/configure-pages; empty for root/custom domains.
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
+
   // Allow dev server access from local network (mobile testing, etc.)
   allowedDevOrigins: ['http://192.168.*.*:3000'],
 
