@@ -20,6 +20,13 @@ describe('Cell', () => {
     expect(link).toHaveClass('project-card-link');
   });
 
+  it('opens the project link in a new tab', () => {
+    render(<Cell data={mockProject} />);
+    const link = screen.getByRole('link');
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
   it('renders project description', () => {
     render(<Cell data={mockProject} />);
     expect(screen.getByText(mockProject.desc)).toBeInTheDocument();

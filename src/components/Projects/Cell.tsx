@@ -55,7 +55,12 @@ export default function Cell({ data }: CellProps) {
       className={`project-card ${featured ? 'project-card--featured' : ''} ${hasLink ? 'project-card--linked' : 'project-card--static'}`}
     >
       {hasLink ? (
-        <a href={link} className="project-card-link">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-card-link"
+        >
           {cardContent}
         </a>
       ) : (
