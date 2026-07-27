@@ -9,11 +9,21 @@ export interface Project {
   featured?: boolean;
 }
 
-// Placeholders for now. These get replaced with real write-ups as projects ship.
 const data: Project[] = [
+  {
+    title: 'Structured Data Extractor',
+    subtitle: 'Extraction pipeline + eval harness',
+    link: 'https://github.com/ugbr/structured-data-extractor',
+    image: '/images/projects/structured-data-extractor.svg',
+    date: '2026-07-27',
+    desc: 'Turns scanned receipts into validated JSON with the Anthropic API, then scores every field against hand-checked labels so I can say how accurate it really is and what it costs per thousand documents. The eval harness is the actual point.',
+    tech: ['Python', 'Pydantic', 'Anthropic API', 'Evals'],
+    featured: true,
+  },
   {
     title: 'Agentic AI Assistant',
     subtitle: 'In progress',
+    // Placeholder until this one is far enough along to write up properly.
     image: '/images/projects/placeholder.svg',
     date: '2026-01-01',
     desc: "An AI agent that can plan a task, call tools, and follow through on its own. I'm building this now and will write it up properly once it's further along.",

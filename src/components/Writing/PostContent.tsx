@@ -2,6 +2,7 @@
 
 import Markdown from 'markdown-to-jsx';
 import Image from 'next/image';
+import type { ReactNode } from 'react';
 
 interface PostContentProps {
   content: string;
@@ -32,6 +33,15 @@ export default function PostContent({ content }: PostContentProps) {
                 />
               );
             },
+          },
+          // Wide tables need their own scroll container so the page body
+          // never scrolls sideways on narrow screens.
+          table: {
+            component: ({ children }: { children?: ReactNode }) => (
+              <div className="prose-table-scroll">
+                <table>{children}</table>
+              </div>
+            ),
           },
         },
       }}
