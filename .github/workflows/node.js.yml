@@ -219,8 +219,21 @@ jobs:
       - name: Verify export
         if: steps.pages.outputs.base_path == ''
         run: npm run verify-export
-        env:
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      # The skip above cost us a production bug: next/image leaves `src` alone
+      # under `unoptimized: true` and a native <img> is never rewritten, so
+      # every public/ asset 404'd on the deployed project path while all three
+      # non-basePath legs stayed green. This guards that class directly.
+      - name: Check public assets carry the basePath
+        if: steps.pages.outputs.base_path != ''
+        shell: bash
+        run: |
+          if grep -rhoE '(src|href)="/images/[^"]*"' out/ | sort -u > /tmp/unprefixed.txt && [ -s /tmp/unprefixed.txt ]; then
+            echo "::error::Public asset references are missing the ${{ steps.pages.outputs.base_path }} prefix and will 404:"
+            head -20 /tmp/unprefixed.txt
+            exit 1
+          fi
+          echo "All public asset references carry the basePath."
 
       - name: Upload build artifacts
         if: >-

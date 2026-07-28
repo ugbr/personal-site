@@ -4,6 +4,8 @@ import Markdown from 'markdown-to-jsx';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 
+import { withBasePath } from '@/lib/utils';
+
 interface PostContentProps {
   content: string;
 }
@@ -21,7 +23,7 @@ export default function PostContent({ content }: PostContentProps) {
 
               return (
                 <Image
-                  src={src}
+                  src={withBasePath(src)}
                   alt={alt || ''}
                   width={1200}
                   height={630}
