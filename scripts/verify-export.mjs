@@ -325,8 +325,10 @@ const REQUIRED_SOCIAL_META = [
   ['property', 'og:image'],
   ['property', 'og:image:alt'],
   ['name', 'twitter:card'],
-  ['name', 'twitter:site'],
-  ['name', 'twitter:creator'],
+  // twitter:site and twitter:creator are deliberately absent: they attribute a
+  // card to an X/Twitter account, and this site has none. Next drops both when
+  // TWITTER_HANDLE is empty. Add them back here alongside the handle in
+  // src/lib/utils.ts if an account is ever created.
   ['name', 'twitter:title'],
   ['name', 'twitter:description'],
   ['name', 'twitter:image'],
@@ -340,13 +342,20 @@ for (const record of records) {
     fail(relativePath, `exports draft route: ${route}`);
   }
 
-  if (robots.length > 1) {
-    fail(relativePath, `${robots.length} robots tags: ${robots.join(' | ')}`);
-  }
+  // Next emits its own `noindex` on the 404 in addition to the one the route's
+  // metadata sets, so a page can legitimately carry more than one robots tag.
+  // What matters is whether they disagree: crawlers take the union, and a page
+  // that says both index and noindex has no defined meaning.
   if (directives.includes('noindex') && directives.includes('index')) {
     fail(
       relativePath,
       `robots says both noindex and index: ${robots.join(' | ')}`,
+    );
+  }
+  if (directives.includes('nofollow') && directives.includes('follow')) {
+    fail(
+      relativePath,
+      `robots says both nofollow and follow: ${robots.join(' | ')}`,
     );
   }
 

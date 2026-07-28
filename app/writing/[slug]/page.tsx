@@ -10,7 +10,13 @@ import {
   HOME_URL,
   webPageNode,
 } from '@/lib/schema';
-import { AUTHOR_NAME, formatDate, SITE_URL } from '@/lib/utils';
+import {
+  AUTHOR_NAME,
+  formatDate,
+  SITE_IMAGE_DIMENSIONS,
+  SITE_IMAGE_PATH,
+  SITE_URL,
+} from '@/lib/utils';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,18 +44,32 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       type: 'article',
+      locale: 'en_US',
+      siteName: AUTHOR_NAME,
       title: post.title,
       description: post.description,
       url,
       publishedTime: post.date,
       authors: [AUTHOR_NAME],
+      images: [
+        {
+          url: SITE_IMAGE_PATH,
+          width: SITE_IMAGE_DIMENSIONS.width,
+          height: SITE_IMAGE_DIMENSIONS.height,
+          alt: AUTHOR_NAME,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: [SITE_IMAGE_PATH],
     },
   };
 }

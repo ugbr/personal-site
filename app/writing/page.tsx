@@ -24,6 +24,10 @@ export const metadata: Metadata = {
     path: '/writing/',
   }),
   alternates: {
+    // Spreading createPageMetadata above sets `alternates.canonical`, and this
+    // object replaces it wholesale rather than merging, so the canonical has to
+    // be restated here or the page ships without one.
+    canonical: WRITING_URL,
     types: {
       'application/rss+xml': '/feed.xml',
     },

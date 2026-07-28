@@ -9,7 +9,6 @@ interface CoursesProps {
 export default function Courses({ data }: CoursesProps) {
   return (
     <div className="courses">
-      <div className="link-to" id="courses" />
       <div className="title">
         <h3>Courses</h3>
       </div>

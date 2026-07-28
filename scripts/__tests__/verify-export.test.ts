@@ -269,7 +269,8 @@ describe('verify-export', () => {
     ['Open Graph title', 'property="og:title"', 'og:title'],
     ['Open Graph site name', 'property="og:site_name"', 'og:site_name'],
     ['Twitter card', 'name="twitter:card"', 'twitter:card'],
-    ['Twitter creator', 'name="twitter:creator"', 'twitter:creator'],
+    // twitter:site and twitter:creator are not required; this site has no
+    // X/Twitter account for a card to attribute. See REQUIRED_SOCIAL_META.
   ])('rejects a missing %s', (_, attribute, tagName) => {
     const root = createFixture();
     mutate(root, 'out/about/index.html', (html) =>

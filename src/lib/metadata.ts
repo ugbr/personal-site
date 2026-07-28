@@ -25,6 +25,9 @@ export function createPageMetadata({
   return {
     title,
     description,
+    // Without this every page ships zero canonical links, so the trailing-slash
+    // and no-slash forms of each route compete as separate URLs.
+    ...(absoluteUrl ? { alternates: { canonical: absoluteUrl } } : {}),
     openGraph: {
       type: 'website',
       locale: 'en_US',

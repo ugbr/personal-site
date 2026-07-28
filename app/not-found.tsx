@@ -2,10 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { createPageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = createPageMetadata({
-  title: 'Page Not Found',
-  description: 'The page you are looking for could not be found.',
-});
+export const metadata: Metadata = {
+  ...createPageMetadata({
+    title: 'Page Not Found',
+    description: 'The page you are looking for could not be found.',
+  }),
+  // The root layout opts everything into `index, follow`, and Next adds its own
+  // `noindex` to the 404. Without this override the page ships both and the
+  // instruction to crawlers is contradictory.
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (
