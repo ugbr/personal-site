@@ -19,7 +19,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: SITE_URL,
+      // Trailing slash to match `trailingSlash: true`; the bare origin is a
+      // non-canonical variant of the same page.
+      url: `${SITE_URL}/`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 1,

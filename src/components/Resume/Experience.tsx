@@ -9,7 +9,6 @@ interface ExperienceProps {
 export default function Experience({ data }: ExperienceProps) {
   return (
     <div className="experience">
-      <div className="link-to" id="experience" />
       <div className="title">
         <h3>Experience</h3>
       </div>
