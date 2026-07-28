@@ -11,6 +11,7 @@ npm run lint         # Biome linting
 npm run type-check   # TypeScript checking
 npm test             # Vitest tests
 npm run build        # Production build + static export
+npm run verify-export # Check the built out/ HTML (run after npm run build)
 ```
 
 **File-scoped (faster feedback):**
@@ -80,9 +81,21 @@ Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Biome ·
 - **Blog posts**: Markdown files in `content/writing/` with frontmatter (title, date, description); slug derived from filename
 - **Writing page**: Add external links in `src/data/writing.ts` and keep dated entries sorted newest first; local posts still live in `content/writing/`
 
+## Syncing With Upstream
+
+This repo is a fork of `mldangelo/personal-site`, tracked as the `upstream` remote. It keeps its own visual identity (minimal styling, emerald `#10b981` accent), so an upstream sync is **not** a plain `git merge`.
+
+- Take from upstream: dependency and security bumps, CI/tooling, build config, and portable correctness fixes.
+- Keep ours: everything under `app/styles/`, page and component markup, `src/data/` content, and `content/writing/`.
+- Upstream's `01d8968` ("Ground Station") replaces the palette and typography wholesale and was deliberately declined; the merge commit records it as an ancestor so it will not re-conflict on every future sync.
+- Practical method: `git merge upstream/main --no-commit`, then `git read-tree -u --reset HEAD` to reset the tree to ours while keeping `MERGE_HEAD`, then `git checkout upstream/main -- <specific infra paths>`. This beats resolving conflicts file by file, because upstream changes to files we did not touch are auto-merged silently and would otherwise leak the redesign in.
+- Do not let `actions/configure-pages` run its `static_site_generator: next` codemod. It rewrites `next.config.mjs` and drops `trailingSlash`, which breaks canonical and sitemap URLs on this project-path site. Read its `base_path` output into `NEXT_PUBLIC_BASE_PATH` instead.
+
 ## Testing
 
 Tests live in `__tests__/` directories adjacent to the code they test. Run `npm test` before committing.
+
+`npm run verify-export` checks the generated HTML for problems no component test can see: leaked drafts, contradictory robots tags, duplicate ids, missing canonicals, incomplete share metadata, and broken internal links. Run it after `npm run build`; CI runs it too. Note that component tests render each component alone, so anything about how components _combine_ on a page (duplicate anchor ids, for one) is invisible to them and needs a page-level test in `app/__tests__/`.
 
 ```bash
 npm test                        # Run all tests
