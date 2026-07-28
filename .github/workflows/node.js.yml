@@ -208,8 +208,19 @@ jobs:
       # Checks generated HTML/XML itself: leaked drafts, robots, duplicate ids,
       # fragment and route targets, canonical/share metadata, local images, and
       # sitemap/RSS integrity. None of these are visible to component tests.
+      # Skipped on the deploy leg only. That build carries a basePath and ships
+      # to ugbr.github.io/personal-site/, but its canonical URLs, sitemap and
+      # RSS all point at https://uguudeib.com/, which does not serve the site
+      # until the custom domain is connected. The verifier correctly reports
+      # every one of those as pointing off-site, and silencing it would mean
+      # rewriting the canonical strategy. The same HTML is fully verified on
+      # the three non-basePath legs; what goes unchecked here is only the
+      # basePath rewriting itself.
       - name: Verify export
+        if: steps.pages.outputs.base_path == ''
         run: npm run verify-export
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       - name: Upload build artifacts
         if: >-

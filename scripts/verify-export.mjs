@@ -110,6 +110,16 @@ function readSiteConfig() {
       );
     }
 
+    // The deploy workflow builds project-path sites with a basePath that the
+    // canonical homepage does not carry (github.io/personal-site vs the custom
+    // domain), injected via NEXT_PUBLIC_BASE_PATH. Honour the same source the
+    // build read, or every internal link resolves against the wrong prefix.
+    const envBasePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? '').trim();
+    if (envBasePath) {
+      const normalized = `/${envBasePath.replace(/^\/+|\/+$/g, '')}`;
+      return { origin: url.origin, basePath: normalized };
+    }
+
     const basePath =
       url.pathname === '/' ? '' : url.pathname.replace(/\/+$/, '');
     return { origin: url.origin, basePath };
